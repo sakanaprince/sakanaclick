@@ -19,6 +19,7 @@ var mes = 0;
 var itemX = w/2;
 var itemY = 700;
 
+
 function draw(){
     ctx.fillStyle = "#87cefa";
     ctx.fillRect(0, 0, w, h);
@@ -37,7 +38,7 @@ function draw(){
     document.getElementById("Button").innerHTML = mes;
   }
 
-  
+  //さかなをクリックした時
   canvas.addEventListener("click", e => {
     const rect = canvas.getBoundingClientRect();
     mousePointer_X = e.clientX - rect.left;
@@ -49,16 +50,27 @@ function draw(){
     }
 });
 
+//アイテム1をクリックした時
 canvas.addEventListener("click", e => {
     const rect = canvas.getBoundingClientRect();
     mousePointer_X = e.clientX - rect.left;
     mousePointer_Y = e.clientY - rect.top;
 
-    //500 <=> mainX 200<=>mainY
+   
     if (mousePointer_X > w/2 && mousePointer_X < w/2 + 200 && mousePointer_Y > 700 && mousePointer_Y < 700 + 200) {
         if(point > 9){
             point -= 10;
             click += 1;
         }
+    }
+});
+
+canvas.addEventListener("mousemove", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mousePointer_X = e.clientX - rect.left;
+    mousePointer_Y = e.clientY - rect.top;
+
+    if (mousePointer_X > w/2 && mousePointer_X < w/2 + 200 && mousePointer_Y > 700 && mousePointer_Y < 700 + 200) {
+       ctx.fillText("ほんっとにいつもありがとうございます",200,900);
     }
 });
